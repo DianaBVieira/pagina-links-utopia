@@ -1,12 +1,30 @@
+import type { LucideIcon } from "lucide-react";
 import {
   ArrowUpRight,
+  CalendarClock,
+  Clock3,
   Download,
+  Dumbbell,
+  Flower2,
   Globe2,
+  Headphones,
   Landmark,
   Sparkles,
 } from "lucide-react";
 
-const solutions = [
+type Solution = {
+  name: string;
+  description: string;
+  action: string;
+  icon: LucideIcon;
+  tone: string;
+  href?: string;
+  image?: string;
+  wide?: boolean;
+  soon?: boolean;
+};
+
+const solutions: Solution[] = [
   {
     name: "FinançasPro",
     description: "Planeje o ano, organize despesas e acompanhe cartões em um só lugar.",
@@ -15,6 +33,7 @@ const solutions = [
     image: "/financaspro-logo.png",
     icon: Landmark,
     tone: "finance",
+    wide: true,
   },
   {
     name: "VemPraPista",
@@ -33,6 +52,39 @@ const solutions = [
     image: "/pulso-utopia-logo.png",
     icon: Download,
     tone: "pulse",
+  },
+  {
+    name: "AudioFy",
+    description: "Histórias em áudio para ouvir quando e onde você quiser.",
+    href: "https://contosaudiofy.com.br",
+    action: "Ouvir agora",
+    icon: Headphones,
+    tone: "audio",
+  },
+  {
+    name: "DentalFlow",
+    description: "Agendamento de consultas odontológicas direto pelo WhatsApp.",
+    action: "Em breve",
+    image: "/dentalflow-logo.png",
+    icon: CalendarClock,
+    tone: "dental",
+    soon: true,
+  },
+  {
+    name: "Memorial Eterno",
+    description: "Um memorial digital de homenagem, acessível por QR Code na placa física.",
+    action: "Em breve",
+    icon: Flower2,
+    tone: "memorial",
+    soon: true,
+  },
+  {
+    name: "Gestão para Academias",
+    description: "Matrículas, mensalidades, treinos e frequência dos alunos em um só painel.",
+    action: "Em breve",
+    icon: Dumbbell,
+    tone: "gym",
+    soon: true,
   },
 ];
 
@@ -83,17 +135,26 @@ export default function Home() {
         <div className="solutions-list">
           {solutions.map((solution) => {
             const Icon = solution.icon;
-            return (
-              <a
-                key={solution.name}
-                className={`solution-card ${solution.tone}`}
-                href={solution.href}
-                target="_blank"
-                rel="noreferrer"
-              >
+            const className = [
+              "solution-card",
+              solution.tone,
+              solution.wide ? "wide" : "",
+              solution.soon ? "is-soon" : "",
+            ]
+              .filter(Boolean)
+              .join(" ");
+
+            const content = (
+              <>
                 <div className="solution-art">
                   <span className="solution-glow" />
-                  <img src={solution.image} alt="" />
+                  {solution.image ? (
+                    <img src={solution.image} alt="" />
+                  ) : (
+                    <span className="solution-icon">
+                      <Icon size={34} strokeWidth={1.6} />
+                    </span>
+                  )}
                 </div>
                 <div className="solution-copy">
                   <h3>{solution.name}</h3>
@@ -102,8 +163,26 @@ export default function Home() {
                     <Icon size={16} /> {solution.action}
                   </span>
                 </div>
-                <span className="arrow"><ArrowUpRight size={20} /></span>
+                <span className="arrow">
+                  {solution.soon ? <Clock3 size={17} /> : <ArrowUpRight size={20} />}
+                </span>
+              </>
+            );
+
+            return solution.href ? (
+              <a
+                key={solution.name}
+                className={className}
+                href={solution.href}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {content}
               </a>
+            ) : (
+              <div key={solution.name} className={className} aria-disabled="true">
+                {content}
+              </div>
             );
           })}
         </div>

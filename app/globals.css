@@ -199,8 +199,41 @@ a { color: inherit; text-decoration: none; }
 .solution-card.finance { --card-accent: #3e7cff; }
 .solution-card.run { --card-accent: #ff7c21; }
 .solution-card.pulse { --card-accent: #e39bff; }
+.solution-card.audio { --card-accent: #ffc53e; }
+.solution-card.dental { --card-accent: #23c9a7; }
+.solution-card.memorial { --card-accent: #8fb3ff; }
+.solution-card.gym { --card-accent: #ff5d8f; }
 .solution-art { position: relative; display: grid; width: 88px; height: 88px; place-items: center; }
 .solution-art img { position: relative; z-index: 1; max-width: 76px; max-height: 76px; border-radius: 18px; object-fit: contain; filter: drop-shadow(0 9px 18px rgb(0 0 0 / 42%)); }
+.solution-icon {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  width: 62px;
+  height: 62px;
+  place-items: center;
+  border-radius: 19px;
+  color: color-mix(in srgb, var(--card-accent) 80%, white);
+  background: color-mix(in srgb, var(--card-accent) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 34%, transparent);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 10%);
+}
+
+/* Wordmark logos need a wider slot than the square app icons */
+.solution-card.wide { grid-template-columns: 138px 1fr 36px; }
+.solution-card.wide .solution-art { width: 130px; }
+.solution-card.wide .solution-art img { max-width: 124px; max-height: 58px; border-radius: 0; filter: drop-shadow(0 6px 14px rgb(0 0 0 / 45%)); }
+
+/* Coming-soon cards are non-interactive */
+.solution-card.is-soon { cursor: default; opacity: .72; }
+.solution-card.is-soon:hover {
+  transform: none;
+  border-color: rgb(255 255 255 / 11%);
+  background: linear-gradient(115deg, rgb(255 255 255 / 8%), rgb(255 255 255 / 3%));
+}
+.solution-card.is-soon .solution-action { color: #9aa9a0; }
+.solution-card.is-soon .arrow,
+.solution-card.is-soon:hover .arrow { transform: none; background: rgb(255 255 255 / 6%); color: #8a9a91; }
 .solution-glow { position: absolute; inset: 13px; border-radius: 50%; background: var(--card-accent); filter: blur(24px); opacity: .25; }
 .solution-copy { position: relative; z-index: 1; min-width: 0; text-align: left; }
 .solution-copy h3 { margin: 0 0 6px; font-family: var(--font-space); font-size: 20px; letter-spacing: -.02em; }
@@ -223,6 +256,10 @@ footer > span { display: block; margin-top: 21px; color: #607168; font-size: 11p
   .solution-card { grid-template-columns: 76px 1fr 32px; gap: 12px; min-height: 136px; padding: 16px 13px; border-radius: 21px; }
   .solution-art { width: 72px; height: 72px; }
   .solution-art img { max-width: 64px; max-height: 64px; border-radius: 15px; }
+  .solution-icon { width: 54px; height: 54px; border-radius: 16px; }
+  .solution-card.wide { grid-template-columns: 106px 1fr 32px; }
+  .solution-card.wide .solution-art { width: 100px; }
+  .solution-card.wide .solution-art img { max-width: 94px; max-height: 46px; }
   .solution-copy h3 { font-size: 18px; }
   .solution-copy p { font-size: 13px; }
 }
