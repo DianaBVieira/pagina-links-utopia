@@ -64,6 +64,7 @@ const solutions: Solution[] = [
   {
     name: "DentalFlow",
     description: "Agendamento de consultas odontológicas direto pelo WhatsApp.",
+    href: "https://dentalflow.utopiadesenvolvimentos.com.br",
     action: "Em breve",
     image: "/dentalflow-logo.png",
     icon: CalendarClock,
@@ -73,6 +74,7 @@ const solutions: Solution[] = [
   {
     name: "Memorial Eterno",
     description: "Um memorial digital de homenagem, acessível por QR Code na placa física.",
+    href: "https://vendasmemorialeterno.utopiadesenvolvimentos.com.br",
     action: "Em breve",
     icon: Flower2,
     tone: "memorial",
@@ -81,10 +83,10 @@ const solutions: Solution[] = [
   {
     name: "Gestão para Academias",
     description: "Matrículas, mensalidades, treinos e frequência dos alunos em um só painel.",
-    action: "Em breve",
+    href: "https://dianabvieira.github.io/Site_Academia_Modelo01/",
+    action: "Ver demonstração",
     icon: Dumbbell,
     tone: "gym",
-    soon: true,
   },
 ];
 
@@ -169,7 +171,7 @@ export default function Home() {
               </>
             );
 
-            return solution.href ? (
+            return solution.href && !solution.soon ? (
               <a
                 key={solution.name}
                 className={className}
