@@ -30,3 +30,13 @@ definir).
 Versão anterior em `vinext` (React/RSC em Cloudflare Worker) substituída por HTML
 estático para simplificar deploy e indexação. O código antigo está no histórico
 do Git (antes do commit de conversão).
+
+---
+
+## Status e pendências
+
+Visão completa (o que foi feito, o que falta, deploy, DNS) em
+`C:\dev\STATUS-pagina-links-utopia.md` e `C:\dev\STATUS-Utopia-VISAO-GERAL.md`.
+
+Resumo: página pronta, **falta publicar** (Vercel/Cloudflare Pages/GitHub Pages)
+e criar o registro CNAME do subdomínio no Registro.br.
