@@ -15,3 +15,9 @@ node_modules/
 dist/
 .vercel
 *.tar.gz
+
+# páginas de vendas dos produtos — repositórios Git independentes, aninhados só no disco
+/dentalflow/
+/gestao-academias/
+/memorial-eterno-vendas/
+/pulso-utopia/
